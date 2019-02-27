@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{project/init :: init (~{::body},'chara')}">
+
+  <body>
+
+    <h2 align="center">Personajes</h2> <br>
+    <table id="personajes" class="table table-striped">
+        <thead>
+        <tr>
+        	<th style="width: 5px; text-align: center;">ID</th>
+            <th style="width: 150px;text-align: center;" align="center">Nombre</th>
+            <th style="width: 150px;text-align: center;">Deidad</th>
+            <th style="width: 150px;text-align: center;">Arma</th>
+            <th style="width: 150px;text-align: center;">Ciudad</th>
+            <th style="width: 150px;text-align: center;">Tipo de Personaje</th>
+            <th style="width: 150px;text-align: center;">Proyecto de Personaje</th>
+            <th style="width: 150px;text-align: center;">
+            	<a th:href="@{character/new}">
+	            	<span class="glyphicon glyphicon-plus" aria-hidden="true">  </span>
+	            	<span>Nuevo</span>
+				</a>
+			</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="chara : ${charas}">
+        	<td th:text="${chara.idPersonaje}" align="center"/>
+	        <td th:text="${chara.nombre}" align="center"/>
+            <td th:text="${chara.deidad}" align="center"/>
+            <td th:text="${chara.arma}" align="center"/>
+            <td th:text="${chara.ciu_nac.nombreCiudad}" align="center"/>
+            <td th:text="${chara.tipo.nombreTipo}" align="center"/>
+            <td th:text="${chara.proyecto.codigoProyecto}" align="center"/>
+            <td align="center">
+            	<a th:href="${'/character/update/' + chara.idPersonaje}" class="btn btn-default glyphicon glyphicon-list"></a>
+            	<a th:href="${'/character/erase/' + chara.idPersonaje}" class="btn btn-default glyphicon glyphicon-trash"></a>
+            </td>
+      	</tr>                   
+        </tbody>
+    </table> 
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{project/init :: init (~{::body},'users')}">
+
+  <body>
+
+    <h2 align="center">Usuarios</h2> <br>
+    <table id="personajes" class="table table-striped">
+        <thead>
+        <tr>
+        	<th style="width: 5px; text-align: center;">ID</th>
+            <th style="width: 150px;text-align: center;" align="center">Nombre</th>
+            <th style="width: 150px;text-align: center;">Apellido/s</th>
+            <th style="width: 150px;text-align: center;">Username</th>
+            <th style="width: 150px;text-align: center;">Email</th>
+            <th style="width: 150px;text-align: center;">Fecha creacion </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+        	<td th:text="${user.idUser}" align="center"/>
+	        <td th:text="${user.nombre}" align="center"/>
+            <td th:text="${user.apellido}" align="center"/>
+            <td th:text="${user.usename}" align="center"/>
+            <td th:text="${user.email}" align="center"/>
+            <td th:text="${user.cre_at}" align="center"/>
+      	</tr>                   
+        </tbody>
+    </table> 
+  </body>
+</html>

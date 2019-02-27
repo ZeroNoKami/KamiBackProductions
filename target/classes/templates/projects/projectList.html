@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{project/init :: init (~{::body},'projects')}">
+  <body>
+    <h2 align="center">Proyectos</h2>
+    <table id="projects" class="table table-striped" style="width: 50%;" align="center">
+        <thead>
+        <tr>
+            <th style="width: 150px;text-align: center;" align="center">ID</th>
+            <th style="width: 150px;text-align: center;">Proyecto</th>
+            <th style="width: 150px;text-align: center;">Codigo Proyecto</th>
+            <th style="width: 150px;text-align: center;">
+            	<a th:href="@{project/new}">
+	            	<span class="glyphicon glyphicon-plus" aria-hidden="true">  </span>
+	            	<span>Nuevo</span>
+				</a>
+			</th>
+       </tr>
+        </thead>
+        <tbody>
+        <tr th:each="proyecto : ${projects}">
+	        <td th:text="${proyecto.idProyecto}" align="center"/>
+            <td th:text="${proyecto.nombreProyecto}" align="center"/>
+            <td th:text="${proyecto.codigoProyecto}" align="center"/>
+            <td align="center">
+            	<a th:href="${'/project/update/' + proyecto.idProyecto}" class="btn btn-default glyphicon glyphicon-list"></a>
+            	<a th:href="${'/project/erase/' + proyecto.idProyecto}" class="btn btn-default glyphicon glyphicon-trash"></a>
+            </td>
+      	</tr>                   
+        </tbody>
+    </table> 
+  </body>
+</html>

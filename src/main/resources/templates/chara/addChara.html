@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{project/init :: init (~{::body},'chara')}">
+<head>
+<meta charset="ISO-8859-1">
+
+</head>
+<body>
+  <h2 align="center">Anadir Personaje</h2>
+ <div>
+        <form class="form-horizontal" th:object="${character}" th:action="@{/character}" method="post" style="margin-right: 130px;">
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="hidden" class="form-control" th:field="*{idPersonaje}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Nombre: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{nombre}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Deidad: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{deidad}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Arma: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{arma}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Ciudad: </label>
+                <div class="col-sm-10">
+	                <div class="form-group" style="margin-top: -8px;">
+					  	<select class="form-control" id="selectCity" style="width: 255px;margin-left: 15px;margin-top: 8px;" th:field="*{ciu_nac}">
+						    <option th:each="city : ${cityList}" th:text="${city.nombreCiudad}" th:value="${city.idCiudad}" ></option>
+	  					</select>
+	                </div>
+           		</div>
+           	</div>
+            <div class="form-group"> 	
+                <label class="col-sm-2 control-label" style="margin-top: -15px;">Tipo: </label>
+                <div class="col-sm-10">   
+	                <div class="form-group" style="margin-top: -15px;">
+						<select class="form-control" id="selectType" style="width: 255px;margin-left: 15px;" th:field="*{tipo}">
+							<option th:each="type : ${typeList}" th:text="${type.nombreTipo}" th:value="${type.idTipo}" ></option>
+		  				</select>
+					</div>          
+			    </div>
+			</div>
+			 <div class="form-group"> 	
+                <label class="col-sm-2 control-label" style="margin-top: -15px;">Proyecto: </label>
+                <div class="col-sm-10">   
+	                <div class="form-group" style="margin-top: -15px;">
+						<select class="form-control" id="selectProject" style="width: 255px;margin-left: 15px;" th:field="*{proyecto}">
+							<option th:each="project : ${projectList}" th:text="${project.nombreProyecto}" th:value="${project.idProyecto}" ></option>
+		  				</select>
+					</div>          
+			    </div>
+			</div>
+			<div class="form-group" >
+                <div class="col-sm-2" style="float: right;">
+                    <button type="submit" class="btn btn-primary" style="float: right;width: 200px;">Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

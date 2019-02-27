@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{project/init :: init (~{::body},'cities')}">
+  <body>
+    <h2 align="center">Tipos</h2>
+    <table id="tipos" class="table table-striped" style="width: 50%;" align="center">
+        <thead>
+        <tr>
+            <th style="width: 150px;text-align: center;" align="center">ID</th>
+            <th style="width: 150px;text-align: center;">Tipos</th>
+            <th style="width: 150px;text-align: center;">
+            	<a th:href="@{type/new}">
+	            	<span class="glyphicon glyphicon-plus" aria-hidden="true">  </span>
+	            	<span>Nuevo</span>
+				</a>
+			</th>
+       </tr>
+        </thead>
+        <tbody>
+        <tr th:each="type : ${types}">
+	        <td th:text="${type.idTipo}" align="center"/>
+            <td th:text="${type.nombreTipo}" align="center"/>
+            <td align="center">
+            	<a th:href="${'/type/update/' + type.idTipo}" class="btn btn-default glyphicon glyphicon-list"></a>
+            	<a th:href="${'/type/erase/' + type.idTipo}" class="btn btn-default glyphicon glyphicon-trash"></a>
+            </td>
+      	</tr>                   
+        </tbody>
+    </table> 
+  </body>
+</html>
