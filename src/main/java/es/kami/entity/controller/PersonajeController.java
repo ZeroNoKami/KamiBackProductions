@@ -35,7 +35,7 @@ class PersonajeController {
 	// Lista de Personajes
 	@GetMapping("/charas")
 	public String showCharList(Map<String, Object> model) {
-		model.put("charas", this.JPAchara);
+		model.put("charas", this.JPAchara.findAll());
 		return "chara/charasList";
 	}
 	// Borrar un personaje
@@ -63,9 +63,10 @@ class PersonajeController {
 	
 	// Actualizar Personajes
 	@RequestMapping(path = "/character/update/{id}", method = RequestMethod.GET)
-    public String editCharacter(@PathVariable(value = "id") Long id, Model model, Map<String, Object> cities, Map<String, Object> types) {
+    public String editCharacter(@PathVariable(value = "id") Long id, Model model, Map<String, Object> cities, Map<String, Object> types,  Map<String, Object> pro) {
 		cities.put("cityList", this.JPAcity.findAll());
 		types.put("typeList", this.JPAtype.findAll());
+		pro.put("projectList", this.JPApro.findAll());
         model.addAttribute("character", JPAchara.findById(id));
         return "chara/addChara";
     }
