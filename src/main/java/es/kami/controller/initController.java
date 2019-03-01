@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class initController {
-
+		//TODO POSMAN!!!!
 		@GetMapping("/")
 		public String welcome() {
 			return "project/index";
