@@ -18,29 +18,29 @@ class ProyectoController{
 	    public ProyectoController(IProyectoRepository proServ) {
 	        this.proRepo = proServ;
 	    }
+	    
 	    //Ver Proyectos
 	    @GetMapping("/projects")
 	    public String showProjects(Map<String, Object> model) {
 	        model.put("projects", this.proRepo.findAll());
 	        return "projects/projectList";
 	    }
-
 		
-		// Actualizar Ciudades
+		// Actualizar Proyecto
 		@RequestMapping(path = "/project/update/{id}", method = RequestMethod.GET)
 	    public String editProject(Model model, @PathVariable(value = "id") Long id) {
 	        model.addAttribute("project", proRepo.findById(id));
 	        return "projects/addProjects";
 	    }
 
-		// Borrar una ciudad
+		// Borrar un Proyecto
 		@RequestMapping(value = "/project/erase/{id}", method = RequestMethod.GET)
 		public String erasedProject(@PathVariable Long id) {
 			this.proRepo.deleteById(id);
 			return "redirect:/projects";
 		}
 		
-	    //Insertar nuevos proyectos
+	    //Insertar nuevos Proyectos
 		@RequestMapping(path = "/project/new", method = RequestMethod.GET)
 		public String createProject(Model model) {
 			model.addAttribute("project", new Proyectos());
