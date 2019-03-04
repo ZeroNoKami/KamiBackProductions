@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 
 @SpringBootApplication
 @Controller
-
 public class initApplication {
 	
 	public static void main(String[] args) {

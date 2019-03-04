@@ -8,8 +8,7 @@ class crashController {
 
     @GetMapping("/error")
     public String triggerException() {
-        throw new RuntimeException("Expected: controller used to showcase what "
-                + "happens when an exception is thrown");
+        throw new RuntimeException(this.toString());
     } 
 
 }

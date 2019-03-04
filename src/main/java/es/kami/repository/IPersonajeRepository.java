@@ -7,4 +7,6 @@ import es.kami.entity.Personajes;
 
 @Repository
 public interface IPersonajeRepository extends JpaRepository<Personajes, Long> {
+	
+
 }

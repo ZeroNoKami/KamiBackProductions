@@ -38,6 +38,19 @@ public class Personajes {
 	(name = "proyecto", foreignKey = @ForeignKey(name="personajes_ibfk_3"))
 	private Proyectos proyecto;
 	
+	public Personajes() {}
+	
+	public Personajes(Long id, Personajes persona) {
+		super();
+		this.idPersonaje = id;
+		this.nombre = persona.getNombre();
+		this.deidad = persona.getDeidad();
+		this.tipo = persona.getTipo();
+		this.arma = persona.getArma();
+		this.ciu_nac = persona.getCiu_nac();
+		this.proyecto = persona.getProyecto();
+	}
+	
 	//----- GETTERS Y SETTERS -----// 
 	//ID PERSONAJE
 	public Long getIdPersonaje() {
